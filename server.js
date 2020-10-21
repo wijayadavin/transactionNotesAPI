@@ -1,23 +1,20 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const rootRoute = require('./routes/rootRoute')
-const addStore = require('./routes/stores/addStore')
-const getStore = require('./routes/stores/getStore')
-const addInventory = require('./routes/inventory/addInventory')
-const getInventory = require('./routes/inventory/getInventory')
-const addGoods = require('./routes/goods/addGoods')
-const getGoods = require('./routes/goods/getGoods')
+
+const addAccount = require('./routes/transactions/addTransactions')
+const getAccount = require('./routes/transactions/getTransactions')
+const addTransactions = require('./routes/statements/addTransactions')
+const getTransactions = require('./routes/statements/getTransactions')
 
 const app = express()
 app.use(bodyParser.json())
 
 app.use(rootRoute)
-app.use(addStore)
-app.use(getStore)
-app.use(addInventory)
-app.use(getInventory)
-app.use(addGoods)
-app.use(getGoods)
+app.use(addAccount)
+app.use(getAccount)
+app.use(addTransactions)
+app.use(getTransactions)
 
 const port = 3000
 app.listen(port, () => {

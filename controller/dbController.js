@@ -1,12 +1,11 @@
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
-const goodsModel = require('../model/goodsModel')
-const inventoriesModel = require('../model/inventoriesModel')
-const storesModel = require('../model/storesModel')
 
-// ⚠️ propietary code, don't change it ⚠️
-// this code will create db.json automatically if your folder doesn't have one
-// courious? 👀 search for "IIFE function"
+const accountsModel = require('../model/accountsModel')
+const statementsModel = require('../model/statementsModel')
+const transactionsModel = require('../model/transactionsModel')
+
+
 let db;
 (async () => {
   try {
@@ -73,14 +72,14 @@ function get(tableName, query) {
 function add(tableName, body) {
   let shapedBody
 
-  if (tableName == 'goods') {
-    shapedBody = shapeObject(body, goodsModel)
+  if (tableName == 'accounts') {
+    shapedBody = shapeObject(body, accountsModel)
   }
-  if (tableName == 'inventories') {
-    shapedBody = shapeObject(body, inventoriesModel)
+  if (tableName == 'statements') {
+    shapedBody = shapeObject(body, statementsModel)
   }
-  if (tableName == 'stores') {
-    shapedBody = shapeObject(body, storesModel)
+  if (tableName == 'transactions') {
+    shapedBody = shapeObject(body, transactionsModel)
   }
 
   if (!shapedBody) {

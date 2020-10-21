@@ -2,19 +2,21 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const rootRoute = require('./routes/rootRoute')
 
-const addAccount = require('./routes/transactions/addTransactions')
-const getAccount = require('./routes/transactions/getTransactions')
-const addTransactions = require('./routes/statements/addTransactions')
-const getTransactions = require('./routes/statements/getTransactions')
+const getAccount = require('./routes/accounts/getAccount')
+const addTransactions = require('./routes/transactions/addTransactions')
+const getTransactions = require('./routes/transactions/getTransactions')
+const signup = require('./routes/signup')
+const login = require('./routes/login')
 
 const app = express()
 app.use(bodyParser.json())
 
 app.use(rootRoute)
-app.use(addAccount)
 app.use(getAccount)
 app.use(addTransactions)
 app.use(getTransactions)
+app.use(signup)
+app.use(login)
 
 const port = 3000
 app.listen(port, () => {

@@ -20,9 +20,9 @@ let db;
     const adapter = new FileSync('db.json')
     db = low(adapter)
     db.defaults({
-      stores: [],
-      inventories: [],
-      goods: []
+      accounts: [],
+      statements: [],
+      transactions: []
     })
       .write()
   } catch (error) {
@@ -81,7 +81,6 @@ function add(tableName, body) {
   if (tableName == 'transactions') {
     shapedBody = shapeObject(body, transactionsModel)
   }
-
   if (!shapedBody) {
     return false
   }

@@ -3,9 +3,9 @@ const app = express.Router()
 const db = require('../controller/dbController')
 
 
-app.post('/goods', (req, res) => {
-  const body = req.body
-  const result = db.add('goods', body)
+app.post('/signup', (req, res) => {
+  const result = db.add('accounts', req.body)
+  console.log(result)
   if (!result) {
     res.status(400).send('Wrong body')
   } else {

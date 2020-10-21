@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express.Router()
-const db = require('../../controller/dbController')
+const db = require('../controller/dbController')
 
 
 app.post('/login', (req, res) => {

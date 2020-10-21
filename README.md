@@ -1,2 +1,2 @@
-# BinarStoresAPI
-Binar learning material for building simple stores API using LowDB
+<h3>Transactions API</h3>
+a simple API for transaction activities

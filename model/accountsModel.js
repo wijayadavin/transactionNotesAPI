@@ -3,6 +3,6 @@ module.exports = [
   "firstName",
   "lastName",
   "email",
-  "userName",
+  "username",
   "password"
 ]

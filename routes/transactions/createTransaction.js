@@ -1,7 +1,7 @@
 /* eslint-disable new-cap */
 const express = require('express');
 const router = express.Router();
-const db = require('../controller/dbController');
+const db = require('../../controller/dbController');
 const authorize = require('../../middleware/authorizationMiddleware');
 
 

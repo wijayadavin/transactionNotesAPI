@@ -14,19 +14,21 @@ router.post('/login', authorize(), (req, res) => {
     // Set a payload for admin users:
     const payload = {
       username: req.body.username,
-      permissions: jwtConfigurations.userPermission,
+      permissions: jwtConfigurations.adminPermission,
     };
     // Generate a token according to the secret key:
     const token = jwt.sign(payload, jwtConfigurations.secret);
+    console.log('login as admin');
     res.send(token);
   } else if (result) {
     // Set a payload for non-admin users:
     const payload = {
       username: req.body.username,
-      permissions: jwtConfigurations.adminPermission,
+      permissions: jwtConfigurations.userPermission,
     };
     // Generate a token according to the secret key:
     const token = jwt.sign(payload, jwtConfigurations.secret);
+    console.log('login as users');
     res.send(token);
   } else {
     res.status(401).send('Wrong credentials');

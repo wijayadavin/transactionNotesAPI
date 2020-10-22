@@ -1,9 +1,6 @@
 module.exports = [
-  "id",
-  "creditorID",
-  "debtorID",
-  "type",
-  "amount",
-  "date",
-  "status"
+  'id',
+  'userID',
+  'productID',
+  'date',
 ]

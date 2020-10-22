@@ -1,18 +1,18 @@
-const express = require("express")
-const app = express.Router()
-const db = require("../controller/dbController")
+const express = require('express');
+const app = express.Router();
+const db = require('../controller/dbController');
 
 
-app.post("/signup", (req, res) => {
-  const result = db.add("accounts", req.body)
-  console.log(result)
+app.post('/signup', (req, res) => {
+  const result = db.add('accounts', req.body);
+  console.log(result);
   if (!result) {
-    res.status(400).send("Wrong body")
+    res.status(400).send('Wrong body');
   } else {
-    res.send(result)
+    res.send(result);
   }
-  return
-})
+  return;
+});
 
 
-module.exports = app
+module.exports = app;

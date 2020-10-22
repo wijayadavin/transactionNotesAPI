@@ -1,16 +1,16 @@
-const express = require('express')
+const express = require("express")
 const app = express.Router()
-const db = require('../../controller/dbController')
-const authorization = require('../../middleware/authorizationMiddleware')
+const db = require("../../controller/dbController")
+const authorization = require("../../middleware/authorizationMiddleware")
 
 
 app.use(authorization)
 
-app.post('/transactions', (req, res) => {
+app.post("/transactions", (req, res) => {
   const body = req.body
-  const result = db.add('transactions', body)
+  const result = db.add("transactions", body)
   if (!result) {
-    res.status(400).send('Wrong body')
+    res.status(400).send("Wrong body")
   } else {
     res.send(result)
   }

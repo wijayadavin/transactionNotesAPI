@@ -1,23 +1,23 @@
-const low = require('lowdb')
-const FileSync = require('lowdb/adapters/FileSync')
+const low = require("lowdb")
+const FileSync = require("lowdb/adapters/FileSync")
 
-const accountsModel = require('../model/accountsModel')
-const statementsModel = require('../model/statementsModel')
-const transactionsModel = require('../model/transactionsModel')
+const accountsModel = require("../model/accountsModel")
+const statementsModel = require("../model/statementsModel")
+const transactionsModel = require("../model/transactionsModel")
 
 
 let db;
 (async () => {
   try {
-    const fs = require('fs')
-    const util = require('util')
+    const fs = require("fs")
+    const util = require("util")
     const readdir = util.promisify(fs.readdir)
-    const path = require('path').resolve()
+    const path = require("path").resolve()
     const dir = await readdir(path)
-    if (!dir.includes('db.json'))
-      fs.writeFile(path + 'db.json', '', () => 1)
+    if (!dir.includes("db.json"))
+      fs.writeFile(path + "db.json", "", () => 1)
 
-    const adapter = new FileSync('db.json')
+    const adapter = new FileSync("db.json")
     db = low(adapter)
     db.defaults({
       accounts: [],
@@ -72,13 +72,13 @@ function get(tableName, query) {
 function add(tableName, body) {
   let shapedBody
 
-  if (tableName == 'accounts') {
+  if (tableName == "accounts") {
     shapedBody = shapeObject(body, accountsModel)
   }
-  if (tableName == 'statements') {
+  if (tableName == "statements") {
     shapedBody = shapeObject(body, statementsModel)
   }
-  if (tableName == 'transactions') {
+  if (tableName == "transactions") {
     shapedBody = shapeObject(body, transactionsModel)
   }
   if (!shapedBody) {

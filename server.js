@@ -1,15 +1,18 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const rootRoute = require('./routes/root')
+const express = require("express")
+const bodyParser = require("body-parser")
+const rootRoute = require("./routes/root")
 
-const getAccount = require('./routes/accounts/getAccount')
-const addTransactions = require('./routes/transactions/addTransactions')
-const getTransactions = require('./routes/transactions/getTransactions')
-const signup = require('./routes/signup')
-const login = require('./routes/login')
-
+const getAccount = require("./routes/accounts/getAccount")
+const addTransactions = require("./routes/transactions/addTransactions")
+const getTransactions = require("./routes/transactions/getTransactions")
+const signup = require("./routes/signup")
+const login = require("./routes/login")
 
 const app = express()
+
+// Request a token
+app.get()
+
 app.use(bodyParser.json())
 app.use(rootRoute)
 app.use(getAccount)

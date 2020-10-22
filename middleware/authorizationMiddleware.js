@@ -1,4 +1,4 @@
-const hyperId = require('hyperid')
+const hyperId = require("hyperid")
 
 
 function authorization(req, res, next) {
@@ -7,7 +7,7 @@ function authorization(req, res, next) {
     if (isValidToken) {
         next()
     } else {
-        res.status(401).send('Unauthorized')
+        res.status(401).send("Unauthorized")
     }
 }
 

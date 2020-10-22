@@ -4,7 +4,7 @@ const db = require('../controller/dbController');
 
 
 app.post('/signup', (req, res) => {
-  const result = db.add('accounts', req.body);
+  const result = db.add('users', req.body);
   console.log(result);
   if (!result) {
     res.status(400).send('Wrong body');

@@ -21,9 +21,9 @@ let db;
     const adapter = new FileSync('db.json');
     db = low(adapter);
     db.defaults({
-      accounts: [],
-      statements: [],
+      products: [],
       transactions: [],
+      users: [],
     })
         .write();
   } catch (error) {

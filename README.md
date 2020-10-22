@@ -27,18 +27,15 @@
 - /users/readUsers (user's account only)
 - /users/updateUsers (user's account only)
 
-<h3>Admin Users routes:</h3>
+<h3>Admin routes:</h3>
 
-- /root
-- /login
-- /signup
-- /products/createProducts
-- /products/readProducts
-- /products/updateProducts
-- /products/deleteProducts
-- /transactions/createTransactions
-- /transactions/readTransactions
-- /transactions/updateTransactions
-- /transactions/deleteTransactions
-- /users/readUsers
-- /users/updateUsers
+- /admin/products/createProducts
+- /admin/products/readProducts
+- /admin/products/updateProducts
+- /admin/products/deleteProducts
+- /admin/transactions/createTransactions
+- /admin/transactions/readTransactions
+- /admin/transactions/updateTransactions
+- /admin/transactions/deleteTransactions
+- /admin/users/readUsers
+- /admin/users/updateUsers

@@ -19,5 +19,6 @@ module.exports = {
     'transactions: read',
     'transactions: update',
     'transactions: delete',
+    'admin: true',
   ],
 };

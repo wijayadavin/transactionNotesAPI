@@ -5,7 +5,7 @@ const db = require('../controller/dbController');
 const authorize = require('../../middleware/authorizationMiddleware');
 
 
-router.post('/transactions', authorize('transactions: read'), (req, res) => {
+router.get('/transactions', authorize('transactions: read'), (req, res) => {
   const result = db.get('transactions', req.body);
 
   if (!result) {

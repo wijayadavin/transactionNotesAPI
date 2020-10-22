@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../controller/dbController');
 
-router.post('/products', authorize('products: update'), (req, res) => {
+router.patch('/products', authorize('products: update'), (req, res) => {
   const result = db.edit('products', req.body);
 
   if (!result) {

@@ -5,7 +5,7 @@ const db = require('../controller/dbController');
 const authorize = require('../../middleware/authorizationMiddleware');
 
 
-router.post('/transactions', authorize('transactions: delete'), (req, res) => {
+router.delete('/transactions', authorize('transactions: delete'), (req, res) => {
   const result = db.remove('transactions', req.body);
 
   if (!result) {

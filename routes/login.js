@@ -8,7 +8,6 @@ const jwtConfigurations = require('../config/jwtConfigurations');
 
 router.post('/login', (req, res) => {
   const result = db.get('users', req.body);
-  const isAdmin = result.username == 'admin';
 
   if (result.username == 'admin') {
     // Set a payload for admin users:

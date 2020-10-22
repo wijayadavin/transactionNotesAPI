@@ -4,7 +4,7 @@ const router = express.Router();
 const db = require('../controller/dbController');
 
 
-router.post('/products', authorize('products: read'), (req, res) => {
+router.get('/products', authorize('products: read'), (req, res) => {
   const result = db.get('products', req.body);
 
   if (!result) {

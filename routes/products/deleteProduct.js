@@ -4,7 +4,7 @@ const router = express.Router();
 const db = require('../controller/dbController');
 
 
-router.post('/products', authorize('products: delete'), (req, res) => {
+router.delete('/products', authorize('products: delete'), (req, res) => {
   const result = db.remove('products', req.body);
 
   if (!result) {

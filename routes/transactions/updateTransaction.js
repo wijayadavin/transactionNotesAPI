@@ -5,7 +5,7 @@ const db = require('../../controller/dbController');
 const authorize = require('../../middleware/authorizationMiddleware');
 
 
-router.post('/transactions', authorize('transactions: update'), (req, res) => {
+router.patch('/transactions', authorize('transactions: update'), (req, res) => {
   const result = db.edit('transactions', req.body);
 
   if (!result) {

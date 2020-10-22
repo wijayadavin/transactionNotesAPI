@@ -1,4 +1,4 @@
-<h3>Transactions API (Backend only)</h3>
+<h2>Transactions API (Backend only)</h2>
 
 - A simple API that let registered users to buy products
 - Products are managed by Admin users only
@@ -42,5 +42,6 @@
 - /admin/users/updateUsers <sup>b</sup>
 
 <sup>a</sup>: no token needed
+
 <sup>b</sup>: a token is needed
 

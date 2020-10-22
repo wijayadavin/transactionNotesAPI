@@ -1,14 +1,17 @@
 <h3>Transactions API (Backend only)</h3>
-a simple API to get transaction receipts only for registered users
+
+- a simple API to get transaction receipts only for registered users
 
 <h3>Specifications:</h3>
-<li>Modularization with MVC design pattern (without View)</li>
-<li>A simple database with LowDB (JSON database) consisting of Users, Products, and Transactions</li>
+
+- Modularization with MVC design pattern (without View)
+- A simple database with LowDB (JSON database) consisting of Users, Products, and Transactions
 
 <h3>Features:</h3>
-<ul>
-<li>A simple login system with username and password</li>
-<li>A simple authentication & permission token with JWT</li>
-<li>Users may only create Users & Transactions. Moreover Users may also read products and it's own transaction history</li>
-<li>Admin users may do the CRUD on Users, Transactions and Products</li>
-</ul>
+
+- [x] A simple login system with username and password
+- [x] A simple authentication & permission token with JWT
+- [x] Users may only create Users & Transactions. Moreover Users may also read products and it's own transaction history
+- [x] Admin users may do the CRUD on Users, Transactions and Products
+- [ ] Allow multiple admins (currently only the one with username = 'admin')
+

@@ -34,15 +34,18 @@ module.exports = (credentials = []) => {
           console.log(`JWT error: ${err}`);
           return res.status(401).send('Error: access denied');
         }
-        console.log(decoded.permissions);
         // Otherwise, check the credentials:
         if (credentials.length > 0) {
           if (
+            // Is any permission needed?
             decoded.permissions &&
+            // Is the required permission is not empty?
             decoded.permissions.length &&
-            credentials.some((cred) => decoded.permissions.indexOf(cred) >= 0)
-          ) {
-            // Credentials are okay:
+            // Is the required permission is fulfilled?
+            credentials.some(
+                (credential) => decoded.permissions.indexOf(credential) >= 0,
+            )
+          ) { // Credentials are okay:
             req.user = decoded;
             next();
           } else {

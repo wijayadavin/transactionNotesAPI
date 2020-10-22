@@ -18,7 +18,7 @@ router.post('/login', authorize(), (req, res) => {
     };
     // Generate a token according to the secret key:
     const token = jwt.sign(payload, jwtConfigurations.secret);
-    console.log('login as admin');
+    console.log('login as an admin');
     res.send(token);
   } else if (result) {
     // Set a payload for non-admin users:

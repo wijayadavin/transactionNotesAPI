@@ -1,3 +1,4 @@
+/* eslint-disable new-cap */
 const express = require('express');
 const app = express.Router();
 const db = require('../controller/dbController');
@@ -8,7 +9,7 @@ const jwtConfigurations = require('../config/jwtConfigurations');
 app.post('/login', (req, res) => {
   const result = db.get('users', req.body);
   console.log(result);
-  const isAdmin = result.username == 'admin'
+  const isAdmin = result.username == 'admin';
   console.log(isAdmin);
   if (result.username == 'admin') {
     // Set a payload for admin users:

@@ -45,3 +45,5 @@
 
 <sup>b</sup>: a token is needed
 
+<h3>Database design:</h3>
+<img src="https://i.ibb.co/sJLkzqx/Screenshot-from-2020-10-23-02-57-05.png" alt="Screenshot-from-2020-10-23-02-57-05" border="0">

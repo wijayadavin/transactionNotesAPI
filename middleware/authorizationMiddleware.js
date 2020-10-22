@@ -23,7 +23,7 @@ module.exports = (credentials = []) => {
     }
 
     const token = fromHeaderOrQuerystring(req);
-    console.log(token);
+    console.log(credentials);
     if (!token) {
       res.status(401).send('Error: access denied');
     } else {

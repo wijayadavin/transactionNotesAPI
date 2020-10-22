@@ -4,7 +4,6 @@ const router = express.Router();
 const db = require('../controller/dbController');
 const authorize = require('../../middleware/authorizationMiddleware');
 
-const router = express.Router();
 
 router.post('/transactions', authorize('transactions: create'), (req, res) => {
   const result = db.add('transactions', req.body);

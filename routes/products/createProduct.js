@@ -3,7 +3,6 @@ const express = require('express');
 const router = express.Router();
 const db = require('../controller/dbController');
 
-const router = express.Router();
 
 router.post('/products', authorize('products: create'), (req, res) => {
   const result = db.add('products', req.body);

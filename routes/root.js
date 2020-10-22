@@ -1,18 +1,10 @@
 const express = require("express")
 const app = express.Router()
-const jwt = require('jsonwebtoken')
 
+const authorize = require('../middleware/authorizationMiddleware')
 
-app.get("/", (req, res) => {
-  // Set a payload
-  const payload = {
-    name: "Davin",
-    scopes: ["transaction: create"]
-  }
-
-  // Generate a token according to the secret key:
-  const token = jwt.sign(payload, "Secret key")
-  res.send(token)
+app.get("/", authorize, (req, res) => {
+  res.send('Hello world!')
 })
 
 

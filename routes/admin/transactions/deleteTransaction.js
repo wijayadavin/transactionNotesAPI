@@ -5,7 +5,7 @@ const db = require('../../controller/dbController');
 const authorize = require('../../../middleware/authorizationMiddleware');
 
 
-router.delete('/transactions',
+router.delete('/admin/transactions',
     authorize(['transactions: delete', 'admin: true']), (req, res) => {
       const result = db.remove('transactions', req.body);
 

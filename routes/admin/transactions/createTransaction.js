@@ -5,7 +5,7 @@ const db = require('../../controller/dbController');
 const authorize = require('../../../middleware/authorizationMiddleware');
 
 
-router.post('/transactions',
+router.post('/admin/transactions',
     authorize(['transactions: create', 'admin: true']), (req, res) => {
       const result = db.add('transactions', req.body);
 

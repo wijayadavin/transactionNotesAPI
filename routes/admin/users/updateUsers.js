@@ -5,7 +5,7 @@ const db = require('../../../controller/dbController');
 const authorize = require('../../../middleware/authorizationMiddleware');
 
 
-router.patch('/users',
+router.patch('/admin/users',
     authorize(['users: update', 'admin: true']), (req, res) => {
       const result = db.edit('users', req.body);
 

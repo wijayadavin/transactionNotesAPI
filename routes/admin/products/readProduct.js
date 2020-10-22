@@ -4,7 +4,7 @@ const router = express.Router();
 const db = require('../../controller/dbController');
 
 
-router.get('/products',
+router.get('/admin/products',
     authorize(['products: read', 'admin: true']), (req, res) => {
       const result = db.get('products', req.body);
 

@@ -5,7 +5,7 @@ const db = require('../../controller/dbController');
 const authorize = require('../../../middleware/authorizationMiddleware');
 
 
-router.get('/transactions',
+router.get('/admin/transactions',
     authorize(['transactions: read', 'admin: true']), (req, res) => {
       const result = db.get('transactions', req.body);
 

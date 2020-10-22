@@ -4,7 +4,7 @@ const router = express.Router();
 const db = require('../../controller/dbController');
 
 
-router.post('/products',
+router.post('/admin/products',
     authorize(['products: create', 'admin: true']), (req, res) => {
       const result = db.add('products', req.body);
 

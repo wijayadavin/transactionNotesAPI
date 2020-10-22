@@ -4,7 +4,7 @@ const router = express.Router();
 const db = require('../../controller/dbController');
 
 
-router.delete('/products',
+router.delete('/admin/products',
     authorize(['products: delete', 'admin: true']), (req, res) => {
       const result = db.remove('products', req.body);
 

@@ -3,7 +3,7 @@ const app = express.Router()
 
 const authorize = require('../middleware/authorizationMiddleware')
 
-app.get("/", authorize, (req, res) => {
+app.get("/", authorize('transaction: create'), (req, res) => {
   res.send('Hello world!')
 })
 

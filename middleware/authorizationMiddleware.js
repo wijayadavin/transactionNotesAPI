@@ -10,22 +10,46 @@ function fromHeaderOrQuerystring(req) {
     return null;
 }
 
-function authorization(req, res, next) {
-    const token = fromHeaderOrQuerystring(req)
-    if (!token) {
-        res.status(401).send("Error: access denied")
-    } else {
-        // JWT validation:
-        const tokenBody = token.slice(7)
-        jwt.verify(tokenBody, jwtConfigurations.secret, (err, decoded) => {
-            if (err) {
-                return res.status(401).send("Error: access denied")
-            }
-            next()
-        })
+module.exports = (credentials = []) => {
+    return (req, res, next) => {
+        // Allow string:
+        if (typeof credentials === "string") {
+            credentials = [credentials]
+        }
 
+        const token = fromHeaderOrQuerystring(req)
+        if (!token) {
+            res.status(401).send("Error: access denied")
+        }
+        else {
+
+            // JWT validation:
+            jwt.verify(token, jwtConfigurations.secret, (err, decoded) => {
+                if (err) {
+                    console.log(`JWT errur: ${err}`)
+                    return res.status(401).send("Error: access denied")
+                }
+
+                // Check the credentials
+                if (credentials.length > 0) {
+                    if (
+                        decoded.permissions &&
+                        decoded.permissions.length &&
+                        credentials.some(cred => decoded.permissions.indexOf(cred) >= 0)
+                    ) {
+                        next()
+                    } else {
+                        return res.status(401).send("Error: access denied")
+                    }
+                } else {
+
+                    // no credentials needed
+                    next()
+                }
+
+
+            })
+
+        }
     }
 }
-
-
-module.exports = authorization

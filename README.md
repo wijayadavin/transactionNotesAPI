@@ -17,6 +17,7 @@
 - [ ] Allow multiple admins (currently only the one with username = 'admin')
 
 <h3>Normal Users routes:</h3>
+
 - /root
 - /login
 - /signup
@@ -27,6 +28,7 @@
 - /users/updateUsers (user's account only)
 
 <h3>Admin Users routes:</h3>
+
 - /root
 - /login
 - /signup

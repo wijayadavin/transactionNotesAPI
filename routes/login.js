@@ -1,21 +1,20 @@
 /* eslint-disable new-cap */
 const express = require('express');
-const app = express.Router();
+const router = express.Router();
 const db = require('../controller/dbController');
 const jwt = require('jsonwebtoken');
 const jwtConfigurations = require('../config/jwtConfigurations');
 
 
-app.post('/login', (req, res) => {
+router.post('/login', (req, res) => {
   const result = db.get('users', req.body);
-  console.log(result);
   const isAdmin = result.username == 'admin';
-  console.log(isAdmin);
+
   if (result.username == 'admin') {
     // Set a payload for admin users:
     const payload = {
       username: req.body.username,
-      permissions: ['transaction: create', 'product: create'],
+      permissions: jwtConfigurations.userPermission,
     };
     // Generate a token according to the secret key:
     const token = jwt.sign(payload, jwtConfigurations.secret);
@@ -24,7 +23,7 @@ app.post('/login', (req, res) => {
     // Set a payload for non-admin users:
     const payload = {
       username: req.body.username,
-      permissions: ['transaction: create'],
+      permissions: jwtConfigurations.adminPermission,
     };
     // Generate a token according to the secret key:
     const token = jwt.sign(payload, jwtConfigurations.secret);
@@ -35,4 +34,4 @@ app.post('/login', (req, res) => {
 });
 
 
-module.exports = app;
+module.exports = router;

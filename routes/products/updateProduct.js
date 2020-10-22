@@ -1,11 +1,11 @@
 /* eslint-disable new-cap */
 const express = require('express');
-const app = express.Router();
-const db = require('../../controller/dbController');
+const router = express.Router();
+const db = require('../controller/dbController');
 
-app.post('/products', (req, res) => {
+router.post('/products', authorize('products: update'), (req, res) => {
   const result = db.edit('products', req.body);
-  console.log(result);
+
   if (!result) {
     res.status(400).send('Wrong body');
   } else {
@@ -15,4 +15,4 @@ app.post('/products', (req, res) => {
 });
 
 
-module.exports = app;
+module.exports = router;

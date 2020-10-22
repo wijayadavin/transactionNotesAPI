@@ -2,11 +2,12 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../controller/dbController');
+const authorize = require('../../middleware/authorizationMiddleware');
 
 const router = express.Router();
 
-router.post('/products', authorize('products: create'), (req, res) => {
-  const result = db.add('products', req.body);
+router.post('/transactions', authorize('transactions: create'), (req, res) => {
+  const result = db.add('transactions', req.body);
 
   if (!result) {
     res.status(400).send('Wrong body');

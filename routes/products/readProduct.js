@@ -1,14 +1,14 @@
 /* eslint-disable new-cap */
 const express = require('express');
-const app = express.Router();
+const router = express.Router();
 const db = require('../controller/dbController');
 
 
-app.post('/products', (req, res) => {
+router.post('/products', authorize('products: read'), (req, res) => {
   const result = db.get('products', req.body);
-  console.log(result);
+
   if (!result) {
-    res.status(400).send('Wrong body');
+    res.status(404).send('Error: Not found');
   } else {
     res.send(result);
   }
@@ -16,4 +16,4 @@ app.post('/products', (req, res) => {
 });
 
 
-module.exports = app;
+module.exports = router;

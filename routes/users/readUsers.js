@@ -2,10 +2,11 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../controller/dbController');
+const authorize = require('../../middleware/authorizationMiddleware');
 
 
-router.post('/products', authorize('products: delete'), (req, res) => {
-  const result = db.remove('products', req.body);
+router.post('/users', authorize('users: read'), (req, res) => {
+  const result = db.get('users', req.body);
 
   if (!result) {
     res.status(404).send('Error: Not found');

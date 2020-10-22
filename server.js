@@ -10,9 +10,6 @@ const login = require("./routes/login")
 
 const app = express()
 
-// Request a token
-app.get()
-
 app.use(bodyParser.json())
 app.use(rootRoute)
 app.use(getAccount)

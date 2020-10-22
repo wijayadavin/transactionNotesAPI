@@ -4,9 +4,10 @@ const router = express.Router();
 const db = require('../controller/dbController');
 const jwt = require('jsonwebtoken');
 const jwtConfigurations = require('../config/jwtConfigurations');
+const authorize = require('../middleware/authorizationMiddleware');
 
 
-router.post('/login', (req, res) => {
+router.post('/login', authorize(), (req, res) => {
   const result = db.get('users', req.body);
 
   if (result.username == 'admin') {

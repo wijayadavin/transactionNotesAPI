@@ -28,7 +28,7 @@ router.post('/login', authorize(), (req, res) => {
     };
     // Generate a token according to the secret key:
     const token = jwt.sign(payload, jwtConfigurations.secret);
-    console.log('login as users');
+    console.log('login as a normal user');
     res.send(token);
   } else {
     res.status(401).send('Wrong credentials');

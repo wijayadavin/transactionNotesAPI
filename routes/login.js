@@ -10,26 +10,29 @@ const authorize = require('../middleware/authorizationMiddleware');
 router.post('/login', authorize(), (req, res) => {
   const result = db.get('users', req.body);
 
+  // Set a token for admin users:
   if (result.username == 'admin') {
-    // Set a payload for admin users:
+    console.log('login as an admin');
     const payload = {
       username: req.body.username,
       permissions: jwtConfigurations.adminPermission,
     };
-    // Generate a token according to the secret key:
-    const token = jwt.sign(payload, jwtConfigurations.secret);
-    console.log('login as an admin');
-    res.send(token);
+    result.token = jwt.sign(payload,
+        jwtConfigurations.secret,
+        {expiresIn: '45s'},
+    );
+    res.send(result);
   } else if (result) {
-    // Set a payload for non-admin users:
+    // Set a token for non-admin users:
+    console.log('login as a normal user');
     const payload = {
       username: req.body.username,
       permissions: jwtConfigurations.userPermission,
     };
-    // Generate a token according to the secret key:
-    const token = jwt.sign(payload, jwtConfigurations.secret);
-    console.log('login as a normal user');
-    res.send(token);
+    result.token = jwt.sign(payload,
+        jwtConfigurations.secret,
+        {expiresIn: '45s'});
+    res.send(result);
   } else {
     res.status(401).send('Wrong credentials');
   }

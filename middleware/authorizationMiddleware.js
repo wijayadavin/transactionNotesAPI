@@ -24,40 +24,46 @@ module.exports = (credentials = []) => {
     // Allow request from header or query:
     const token = fromHeaderOrQuerystring(req);
 
-    if (!token) {
-      res.status(401).send('Error: access denied');
-    } else {
+
+    try {
+      if (!token) {
+        res.status(401).send('Error: access denied');
+      } else {
       // JWT validation:
-      jwt.verify(token, jwtConfigurations.secret, (err, decoded) => {
+        jwt.verify(token, jwtConfigurations.secret, (err, decodedPayload) => {
         // Return error if error:
-        if (err) {
-          console.log(`JWT error: ${err}`);
-          return res.status(401).send('Error: access denied');
-        }
-        // Otherwise, check the credentials:
-        if (credentials.length > 0) {
-          if (
+          if (err) {
+            return res.status(401).send(err);
+          }
+          // Otherwise, check the credentials:
+          if (credentials.length > 0) {
+            if (
             // Is any permission needed?
-            decoded.permissions &&
+              decodedPayload.permissions &&
             // Is the required permission is not empty?
-            decoded.permissions.length &&
+            decodedPayload.permissions.length &&
             // Is the required permission is fulfilled?
             credentials.some(
-                (credential) => decoded.permissions.indexOf(credential) >= 0,
+                (credential) => decodedPayload.permissions.indexOf(
+                    credential,
+                ) >= 0,
             )
-          ) { // Credentials are okay:
-            req.user = decoded;
-            next();
-          } else {
+            ) { // Credentials are okay:
+              req.user = decodedPayload;
+              next();
+            } else {
             // Credentials are not okay:
-            return res.status(401).send('Error: access denied');
-          }
-        } else {
+              return res.status(401).send('Error: access denied');
+            }
+          } else {
           // If no credentials needed:
-          req.user = decoded;
-          next();
-        }
-      });
+            req.user = decodedPayload;
+            next();
+          }
+        });
+      }
+    } catch (err) {
+      return res.status(500).send(err.message);
     }
   };
 };

@@ -6,7 +6,7 @@ const authorize = require('../../middleware/authorizationMiddleware');
 
 
 router.get('/transactions', authorize('transactions: read'), (req, res) => {
-  const result = db.get('transactions', req.user.username);
+  const result = db.get('transactions', {username: req.user.username});
 
   if (!result) {
     res.status(404).send('Error: Not found');

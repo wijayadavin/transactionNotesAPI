@@ -3,6 +3,7 @@ module.exports = {
   userPermission: [
     'products: read',
     'users: create',
+    'users: read',
     'transactions: create',
     'transactions: read',
   ],

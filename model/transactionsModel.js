@@ -3,4 +3,4 @@ module.exports = [
   'userID',
   'productID',
   'date',
-]
+];

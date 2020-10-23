@@ -6,7 +6,7 @@ const authorize = require('../../middleware/authorizationMiddleware');
 
 
 router.patch('/users', authorize('users: update'), (req, res) => {
-  const result = db.edit('users', req.user.username);
+  const result = db.edit('users', {username: req.user.username});
 
   if (!result) {
     res.status(400).send('Wrong body');

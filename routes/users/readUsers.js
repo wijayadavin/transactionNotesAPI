@@ -6,8 +6,7 @@ const authorize = require('../../middleware/authorizationMiddleware');
 
 
 router.get('/users', authorize('users: read'), (req, res) => {
-  const result = db.get('users', req.user.username);
-
+  const result = db.get('users', {username: req.user.username});
   if (!result) {
     res.status(404).send('Error: Not found');
   } else {

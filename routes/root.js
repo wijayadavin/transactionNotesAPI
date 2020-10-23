@@ -5,7 +5,7 @@ const authorize = require('../middleware/authorizationMiddleware');
 
 
 app.get('/', authorize(), (req, res) => {
-  res.send('Hello world!');
+  res.send('I am root!');
 });
 
 

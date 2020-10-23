@@ -6,6 +6,7 @@ const authorize = require('../../middleware/authorizationMiddleware');
 
 
 router.post('/transactions', authorize('transactions: create'), (req, res) => {
+  req.body.userID = db.get('users', {username: req.user.username}).id;
   const result = db.add('transactions', req.body);
 
   if (!result) {
